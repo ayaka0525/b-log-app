@@ -1,11 +1,11 @@
 <div class="container">
     <ul>
-    <%# 入力されなかったら、エラー文を表示することができる %>
+    <!-- 入力されなかったら、エラー文を表示することができる -->
     <% @article.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
   </ul>
-<%# formヘルパー記述%>
+<!-- formヘルパー記述-->
   <%= form_with(model: @article, url: articles_path, method: 'post', local: true) do |f| %>
     <div>
       <%= f.label :title, 'タイトル' %>
