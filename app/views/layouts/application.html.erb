@@ -9,6 +9,8 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%#表示領域を指定%>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%# bootstrapでアイコン表示のため %>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
   </head>
 
   <body>
@@ -22,6 +24,15 @@
         </div>
       </div>
     </header>
+
+    <% if flash.present? %>
+    <div class="flash">
+    <!-- flashはハッシュなのでeachする時'key','value'使える-->
+        <% flash.each do |key, value| %>
+          <div class="<%= key %>"><%= value %></div>
+        <% end %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

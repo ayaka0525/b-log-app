@@ -10,12 +10,34 @@ class ArticlesController <  ApplicationController
         @article = Article.find(params[:id])
     end
 
+    def new
+      @article = Article.new
+    end
+
+    def create
+        @article = Article.new(article_params)
+        if @article.save
+            #flashで表示するためにnoticeを追記
+          redirect_to article_path(@article), notice:'保存できたよ'
+        else
+            #create-actionの中でnewページを表示してる
+            #@articleのデータがnewでまた取り込みされるので、formの入力内容は消えない
+            flash.now[:error] = '保存に失敗しました'
+          render :new
+        end
+      end
+
     def destroy
         article = Article.find(params[:id])
         article.destroy!
         redirect_to root_path, notice: '削除に成功しました'
 
     end
+
+    private
+  def article_params
+    params.require(:article).permit(:title, :content)
+  end
 
 end
 
