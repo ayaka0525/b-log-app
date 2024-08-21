@@ -27,7 +27,12 @@ class ArticlesController <  ApplicationController
         end
       end
 
+      def edit
+        @article = Article.find(params[:id])
+      end
+
     def destroy
+      #ここでしか使わない変数なので@を付けていない
         article = Article.find(params[:id])
         article.destroy!
         redirect_to root_path, notice: '削除に成功しました'
