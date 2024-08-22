@@ -3,8 +3,6 @@ class ArticlesController <  ApplicationController
   before_action :set_article, only: [:show, :edit, :update]
     #データの一覧を表示する
     def index
-      #バグ確認をするためのコード
-        binding.pry
         # Articleのデータベースにある「すべて」のデータを取得。それをインスタンス編集(@article)に代入
         @articles = Article.all
     end
