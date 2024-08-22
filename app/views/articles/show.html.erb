@@ -4,7 +4,8 @@
     <%= image_tag 'default-avatar.png' %>
     <div>
       <p>cohki0305</p>
-      <p>2020/4/16</p>
+      <!-- 記事の作成日を挿入する。ja.ymlを引用している -->
+      <p><%= @article.display_created_at %></p>
     </div>
     <div class="article_detail_actions">
       <div class="dropdown">
