@@ -44,6 +44,9 @@ gem 'rubocop-rails'
 gem 'better_errors'
 gem 'binding_of_caller'
 
+#Ruby2.6で発生しているサーバーエラー解消
+gem 'net-http'
+
 #ユーザー認証機能
 gem 'devise'
 

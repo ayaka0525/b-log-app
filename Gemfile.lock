@@ -141,6 +141,8 @@ GEM
     mini_portile2 (2.8.7)
     minitest (5.25.1)
     msgpack (1.7.2)
+    net-http (0.4.1)
+      uri
     net-imap (0.3.7)
       date
       net-protocol
@@ -273,6 +275,7 @@ GEM
     tzinfo (1.2.11)
       thread_safe (~> 0.1)
     unicode-display_width (2.5.0)
+    uri (0.13.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.1)
@@ -311,6 +314,7 @@ DEPENDENCIES
   hamlit
   jbuilder (~> 2.7)
   listen (~> 3.2)
+  net-http
   pry-byebug
   puma (~> 4.1)
   rails (~> 6.0.3)
