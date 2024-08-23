@@ -1,6 +1,9 @@
 class ArticlesController <  ApplicationController
   #他のアクションに影響しないようにonlyを使う。
   before_action :set_article, only: [:show, :edit, :update]
+  #ログインしないと使えない
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
     #データの一覧を表示する
     def index
         # Articleのデータベースにある「すべて」のデータを取得。それをインスタンス編集(@article)に代入
