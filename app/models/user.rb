@@ -17,15 +17,19 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-
-         #ユーザーの下に記事が紐づいているとRubyに理解させ、ユーザーが削除されたら記事も消える。
-         has_many :articles, dependent: :destroy
-
-         def has_written?(article)
-          articles.exists?(id: article.id)
-        end
-end
+    # Include default devise modules. Others available are:
+    # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+    devise :database_authenticatable, :registerable,
+           :recoverable, :rememberable, :validatable
+  
+           #ユーザーの下に記事が紐づいているとRubyに理解させ、ユーザーが削除されたら記事も消える。
+           has_many :articles, dependent: :destroy
+  
+           def has_written?(article)
+            articles.exists?(id: article.id)
+          end
+          def display_name
+            self.email.split('@').first
+          end
+  end
+  

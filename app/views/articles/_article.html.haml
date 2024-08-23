@@ -12,7 +12,8 @@
       .card_detail
         = image_tag 'default-avatar.png'
         %div
-          %p cohki0305
+          - if article.user.present?
+            %p= article.user.display_name
           / 記事の作成日を挿入する。ja.ymlを引用している
           %p= article.display_created_at
 / link_to ブロックの終了
