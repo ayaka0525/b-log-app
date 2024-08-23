@@ -1,6 +1,6 @@
 class ArticlesController <  ApplicationController
   #他のアクションに影響しないようにonlyを使う。
-  before_action :set_article, only: [:show, :edit, :update]
+  before_action :set_article, only: [:show]
   #ログインしないと使えない
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
@@ -16,11 +16,13 @@ class ArticlesController <  ApplicationController
     end
 
     def new
-      @article = Article.new
+      #記事の空の箱が出来る
+      @article = current_user.articles.build
     end
 
     def create
-        @article = Article.new(article_params)
+      #ここにも空箱をつくり、.saveで保存。
+        @article = current_user.articles.build(article_params)
         if @article.save
             #flashで表示するためにnoticeを追記
           redirect_to article_path(@article), notice:'保存できたよ'
@@ -35,6 +37,7 @@ class ArticlesController <  ApplicationController
       def edit
         #editページに飛ぶ
         #@article = Article.find(params[:id])
+        @article = current_user.articles.find(params[:id])
       end
 
       def update
