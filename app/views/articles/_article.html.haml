@@ -1,4 +1,3 @@
-/ link_toで囲ったものをすべてリンクにする
 = link_to article_path(article) do
   .card
     .card_image
@@ -12,8 +11,6 @@
       .card_detail
         = image_tag 'default-avatar.png'
         %div
-          - if article.user.present?
-            %p= article.user.display_name
+          %p= article.author_name
           / 記事の作成日を挿入する。ja.ymlを引用している
           %p= article.display_created_at
-/ link_to ブロックの終了
