@@ -15,4 +15,5 @@
 class Comment < ApplicationRecord
     #１つの記事に紐づいてるので単数形にする。
     belongs_to :article
+    validates :content, presence: true
 end
