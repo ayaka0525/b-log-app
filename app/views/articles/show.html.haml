@@ -3,7 +3,7 @@
   .article_detail
     = image_tag 'default-avatar.png'
     %div
-      - if @article.user.present? && current_user.has_written?(@article)
+      - if @article.user.present?
         %p= @article.author_name
     - if user_signed_in?
       .article_detail_actions
