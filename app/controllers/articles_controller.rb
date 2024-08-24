@@ -13,6 +13,8 @@ class ArticlesController <  ApplicationController
     def show
         #paramsのidとするのがrailsのルールのようなもの
         #@article = Article.find(params[:id])
+        #コメント一覧を表示する
+        @comments = @article.comments
     end
 
     def new
