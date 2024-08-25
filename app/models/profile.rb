@@ -20,6 +20,8 @@ class Profile < ApplicationRecord
     # 性別は、あとで変更ができる
     enum gender: { male: 0, female: 1, other: 2 }
     belongs_to :user
+    #アバターという画像をアップロードする
+    has_one_attached :avatar
 
     def age
         # 誕生日が入力されてなかったら「不明」と表示
