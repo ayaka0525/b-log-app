@@ -7,5 +7,7 @@ class ProfilesController < ApplicationController
     end
 
     def edit
+        #空の箱をつくる
+        @profile = current_user.build_profile
     end
 end

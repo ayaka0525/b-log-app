@@ -17,5 +17,7 @@
 #  index_profiles_on_user_id  (user_id)
 #
 class Profile < ApplicationRecord
+    #性別は、あとで変更ができる
+    enum gender: { male: 0, female: 1, other: 2 }
     belongs_to :user
 end
