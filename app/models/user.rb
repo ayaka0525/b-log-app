@@ -24,6 +24,8 @@ class User < ApplicationRecord
   
            #ユーザーの下に記事が紐づいているとRubyに理解させ、ユーザーが削除されたら記事も消える。
            has_many :articles, dependent: :destroy
+           #ユーザーIDとプロフィールは１対１、ユーザーが削除されたらプロフィールも消える。
+           has_one :profile, dependent: :destroy
   
            def has_written?(article)
             articles.exists?(id: article.id)
