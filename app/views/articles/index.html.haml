@@ -3,7 +3,7 @@
   = render 'tabs'
   / eachメソッドを使い、データを繰り返し取得する endを忘れずに
   - @articles.each do |article|
-    = render 'article', article: article
+    = render 'commons/article', article: article
   / each ブロックの終了
   = link_to new_article_path do
     .float_btn

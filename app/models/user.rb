@@ -24,6 +24,10 @@ class User < ApplicationRecord
   
            #ユーザーの下に記事が紐づいているとRubyに理解させ、ユーザーが削除されたら記事も消える。
            has_many :articles, dependent: :destroy
+           #ユーザーIDとプロフィールは１対１、ユーザーが削除されたらプロフィールも消える。
+           has_one :profile, dependent: :destroy
+
+           delegate :birthday, :age, :gender, to: :profile, allow_nil: true
   
            def has_written?(article)
             articles.exists?(id: article.id)
@@ -31,5 +35,18 @@ class User < ApplicationRecord
           def display_name
             self.email.split('@').first
           end
+
+          def prepare_profile
+            profile || build_profile
+          end
+
+          def avatar_image
+            if profile&.avatar&.attached?
+              profile.avatar
+            else
+              'default-avatar.png'
+            end
+          end
+
   end
   
