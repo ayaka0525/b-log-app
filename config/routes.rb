@@ -6,8 +6,10 @@ Rails.application.routes.draw do
 
   #index以外のURLを使用しているので、onlyを外した。
   resources :articles do
-    #記事の下にcomment URLが生成される。
+  #記事の下にcomment URLが生成される。
   resources :comments, only: [:new, :create]
+  #いいねできるように生成・削除でハート画像が変わる
+  resource :like, only: [:create, :destroy]
   end
   #プロフィールは１個なのでidを指定しなくてよく、urlにindex/:idがいらないから'resource'単数を使う。
   resource :profile, only: [:show, :edit, :update]
