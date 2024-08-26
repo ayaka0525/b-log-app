@@ -27,6 +27,10 @@ class User < ApplicationRecord
 
            #ユーザーがいいねできる機能
            has_many :likes, dependent: :destroy
+           #中間テーブルを通して自分がいいねした記事の情報を取得している
+           has_many :favorite_articles, through: :likes, source: :article
+
+
            #ユーザーIDとプロフィールは１対１、ユーザーが削除されたらプロフィールも消える。
            has_one :profile, dependent: :destroy
 

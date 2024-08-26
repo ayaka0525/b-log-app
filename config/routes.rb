@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   #プロフィールは１個なのでidを指定しなくてよく、urlにindex/:idがいらないから'resource'単数を使う。
   resource :profile, only: [:show, :edit, :update]
 
+  #いいねの数を取得するためのURL
+  resources :favorites, only: [:index]
+
 end
