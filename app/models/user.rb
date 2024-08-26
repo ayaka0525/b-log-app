@@ -24,14 +24,22 @@ class User < ApplicationRecord
   
            #ユーザーの下に記事が紐づいているとRubyに理解させ、ユーザーが削除されたら記事も消える。
            has_many :articles, dependent: :destroy
+
+           #ユーザーがいいねできる機能
+           has_many :likes, dependent: :destroy
            #ユーザーIDとプロフィールは１対１、ユーザーが削除されたらプロフィールも消える。
            has_one :profile, dependent: :destroy
 
            delegate :birthday, :age, :gender, to: :profile, allow_nil: true
   
-           def has_written?(article)
+          def has_written?(article)
             articles.exists?(id: article.id)
           end
+
+          def has_liked?(article)
+            likes.exists?(article_id: article.id)
+          end
+          
           def display_name
             self.email.split('@').first
           end
