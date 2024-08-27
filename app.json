@@ -1,0 +1,17 @@
+// サーバーの設定を書く
+{
+    "name": "blog app",
+    "description": "This is blogapp",
+    "keywords": [],
+    "website": "",
+    "repository": "https://github.com/ayaka0525/b-log-app.git",
+    "env": {},
+    "addons": [
+      "heroku-postgresql:hobby-dev"
+    ],
+    "buildpacks": [{
+      "url": "heroku/nodejs"
+    }, {
+      "url": "heroku/ruby"
+    }]
+  }

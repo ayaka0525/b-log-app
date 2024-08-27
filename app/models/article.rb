@@ -2,12 +2,12 @@
 #
 # Table name: articles
 #
-#  id         :integer          not null, primary key
+#  id         :bigint           not null, primary key
 #  content    :text             not null
 #  title      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :integer          not null
+#  user_id    :bigint           not null
 #
 # Indexes
 #
@@ -15,11 +15,13 @@
 #
 # Foreign Keys
 #
-#  user_id  (user_id => users.id)
+#  fk_rails_...  (user_id => users.id)
 #
 
 
 class Article < ApplicationRecord
+    has_one_attached :eyecatch
+
     validates :title, presence: true
     validates :title, length: { minimum: 2, maximum: 100 }
     validates :title, format: { with: /\A(?!\@)/ }
@@ -42,6 +44,10 @@ class Article < ApplicationRecord
     def author_name
         #articleで筆者の名前を簡単に表示
         user.display_name
+    end
+
+    def like_count
+        likes.count
     end
 
     # private

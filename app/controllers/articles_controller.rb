@@ -63,7 +63,7 @@ class ArticlesController <  ApplicationController
 
     private
   def article_params
-    params.require(:article).permit(:title, :content)
+    params.require(:article).permit(:title, :content, :eyecatch)
   end
 
 #before_actionでアクションの前に実行される内容、同じコードを記述しないようにする概念があるため。
