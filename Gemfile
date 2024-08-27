@@ -50,6 +50,9 @@ gem 'net-http'
 #ユーザー認証機能
 gem 'devise'
 
+#AWSに画像・ファイルのアップロード
+gem 'aws-sdk-s3', require: false
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
