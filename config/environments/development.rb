@@ -29,7 +29,7 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  #アマゾンのAWSで動くか確認するにはamazonにする。通常はlocal
+  #アマゾンのAWSで動くか確認するにはamazonにする。通常はlocal　vb
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
