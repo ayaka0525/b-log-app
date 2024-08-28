@@ -4,6 +4,7 @@
     "keywords": [],
     "website": "",
     "repository": "https://github.com/ayaka0525/b-log-app.get",
+
     "env": {},
     "addons": [
       "heroku-postgresql:hobby-dev"
