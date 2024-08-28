@@ -23,11 +23,18 @@ class Article < ApplicationRecord
     has_one_attached :eyecatch
 
     validates :title, presence: true
-    validates :title, length: { minimum: 2, maximum: 100 }
+
+    #lenght(文字数制限)
+    validates :title, length: { minimum:2, maximum: 100 }
+    #タイトルが@から始まらない
     validates :title, format: { with: /\A(?!\@)/ }
+
+    validates :content, length: { minimum:10 }
+    #同じ文章があると保存出来ないようにする
+    validates :content, uniqueness: true
+
     validates :content, presence: true
     validates :content, length: { minimum: 10 }
-    validates :content, uniqueness: true
 
     #validate :validate_title_and_content_length
 
@@ -36,10 +43,20 @@ class Article < ApplicationRecord
     has_many :likes, dependent: :destroy
     belongs_to :user
 
+    validate :validate_title_and_content_length
+
     def display_created_at
         # 記事の作成日を挿入する。ja.ymlを引用している
         I18n.l(self.created_at, format: :default)
     end
+
+    private
+
+    def validate_title_and_content_length
+        #タイトルと内容含めて100文字以内にする
+        char_count = self.title.length + self.content.length
+        errors.add(:content, '100文字以上で！') unless char_count > 100
+      end
 
     def author_name
         #articleで筆者の名前を簡単に表示
@@ -58,5 +75,6 @@ class Article < ApplicationRecord
     #         errors.add(:content, 'タイトルとコンテンツの合計文字数が100文字以上である必要があります。')
     #     end
     # end
+
 
 end
