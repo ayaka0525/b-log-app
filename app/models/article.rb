@@ -2,13 +2,26 @@
 #
 # Table name: articles
 #
-#  id         :integer          not null, primary key
-#  content    :text
-#  title      :string
+#  id         :bigint           not null, primary key
+#  content    :text             not null
+#  title      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_id    :bigint           not null
 #
+# Indexes
+#
+#  index_articles_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
+#
+
+
 class Article < ApplicationRecord
+    has_one_attached :eyecatch
+
     validates :title, presence: true
 
     #lenght(文字数制限)
@@ -21,6 +34,14 @@ class Article < ApplicationRecord
     validates :content, uniqueness: true
 
     validates :content, presence: true
+    validates :content, length: { minimum: 10 }
+
+    #validate :validate_title_and_content_length
+
+    has_many :comments, dependent: :destroy
+    #いいね
+    has_many :likes, dependent: :destroy
+    belongs_to :user
 
     validate :validate_title_and_content_length
 
@@ -36,5 +57,24 @@ class Article < ApplicationRecord
         char_count = self.title.length + self.content.length
         errors.add(:content, '100文字以上で！') unless char_count > 100
       end
+
+    def author_name
+        #articleで筆者の名前を簡単に表示
+        user.display_name
+    end
+
+    def like_count
+        likes.count
+    end
+
+    # private
+
+    #     def validate_title_and_content_length
+    #     char_count = self.title.length + self.content.length
+    #     if char_count < 100
+    #         errors.add(:content, 'タイトルとコンテンツの合計文字数が100文字以上である必要があります。')
+    #     end
+    # end
+
 
 end

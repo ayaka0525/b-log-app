@@ -6,6 +6,10 @@
   / formヘルパー記述(urlとmethodは省略できる)
   = form_with(model: @article, url: articles_path, method: 'post', local: true) do |f|
     %div
+      = f.label :eyecatch, 'アイキャッチ'
+    %div
+      = f.file_field :eyecatch
+    %div
       = f.label :title, 'タイトル'
     %div
       = f.text_field :title, class: 'text'

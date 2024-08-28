@@ -1,0 +1,16 @@
+{
+    "name": "blog app",
+    "description": "This is b-log-app",
+    "keywords": [],
+    "website": "",
+    "repository": "https://github.com/ayaka0525/b-log-app",
+    "env": {},
+    "addons": [
+      "heroku-postgresql:hobby-dev"
+    ],
+    "buildpacks": [{
+      "url": "heroku/nodejs"
+    }, {
+      "url": "heroku/ruby"
+    }]
+  }

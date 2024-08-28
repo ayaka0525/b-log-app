@@ -1,6 +1,9 @@
 class ArticlesController <  ApplicationController
   #他のアクションに影響しないようにonlyを使う。
-  before_action :set_article, only: [:show, :edit, :update]
+  before_action :set_article, only: [:show]
+  #ログインしないと使えない
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
     #データの一覧を表示する
     def index
         # Articleのデータベースにある「すべて」のデータを取得。それをインスタンス編集(@article)に代入
@@ -10,14 +13,18 @@ class ArticlesController <  ApplicationController
     def show
         #paramsのidとするのがrailsのルールのようなもの
         #@article = Article.find(params[:id])
+        #コメント一覧を表示する
+        @comments = @article.comments
     end
 
     def new
-      @article = Article.new
+      #記事の空の箱が出来る
+      @article = current_user.articles.build
     end
 
     def create
-        @article = Article.new(article_params)
+      #ここにも空箱をつくり、.saveで保存。
+        @article = current_user.articles.build(article_params)
         if @article.save
             #flashで表示するためにnoticeを追記
           redirect_to article_path(@article), notice:'保存できたよ'
@@ -32,6 +39,7 @@ class ArticlesController <  ApplicationController
       def edit
         #editページに飛ぶ
         #@article = Article.find(params[:id])
+        @article = current_user.articles.find(params[:id])
       end
 
       def update
@@ -55,7 +63,7 @@ class ArticlesController <  ApplicationController
 
     private
   def article_params
-    params.require(:article).permit(:title, :content)
+    params.require(:article).permit(:title, :content, :eyecatch)
   end
 
 #before_actionでアクションの前に実行される内容、同じコードを記述しないようにする概念があるため。

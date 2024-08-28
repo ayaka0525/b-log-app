@@ -5,8 +5,8 @@ ruby '2.6.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+# posgreSQULのライブラリ?
+gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -44,14 +44,28 @@ gem 'rubocop-rails'
 gem 'better_errors'
 gem 'binding_of_caller'
 
+
 #Ruby2.7以下のサーバーエラー解除
 gem 'net-http'
+
+#Ruby2.6で発生しているサーバーエラー解消
+gem 'net-http'
+
+#ユーザー認証機能
+gem 'devise'
+
+#AWSに画像・ファイルのアップロード
+gem 'aws-sdk-s3', require: false
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   #デバックツール
   gem 'pry-byebug'
+  #環境変数
+  gem 'dotenv-rails'
+
 end
 
 group :development do
