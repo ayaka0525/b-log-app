@@ -42,11 +42,8 @@ gem 'rubocop-rails'
 
 #エラーメッセージとログ
 gem 'better_errors'
+
 gem 'binding_of_caller'
-
-
-#Ruby2.7以下のサーバーエラー解除
-gem 'net-http'
 
 #Ruby2.6で発生しているサーバーエラー解消
 gem 'net-http'
