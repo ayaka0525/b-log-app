@@ -1,10 +1,9 @@
-// サーバーの設定を書く
 {
-    "name": "blog app",
-    "description": "This is blogapp",
+    "name": "b-log-app",
+    "description": "This is b-log-app",
     "keywords": [],
     "website": "",
-    "repository": "https://github.com/ayaka0525/b-log-app.git",
+    "repository": "https://github.com/ayaka0525/b-log-app",
     "env": {},
     "addons": [
       "heroku-postgresql:hobby-dev"
