@@ -36,8 +36,7 @@ gem 'faker'
 #htmlを短くするためのシステム
 gem 'hamlit'
 
-#データベースのカラム名などを可視化(model)
-gem 'annotate'
+
 
 #文法チェック
 gem 'rubocop-rails'
@@ -67,6 +66,8 @@ group :development, :test do
 end
 
 group :development do
+  #データベースのカラム名などを可視化(model)
+  gem 'annotate'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'listen', '~> 3.2'
   gem 'web-console', '>= 3.3.0'
