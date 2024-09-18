@@ -35,19 +35,6 @@ class Article < ApplicationRecord
     has_many :likes, dependent: :destroy
     belongs_to :user
 
-    def display_created_at
-        # 記事の作成日を挿入する。ja.ymlを引用している
-        I18n.l(self.created_at, format: :default)
-    end
-
-    def like_count
-        likes.count
-    end
-
-    def author_name
-        #articleで筆者の名前を簡単に表示
-        user.display_name
-    end
 
     private
 

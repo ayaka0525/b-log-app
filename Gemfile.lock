@@ -121,6 +121,7 @@ GEM
     faker (3.4.2)
       i18n (>= 1.8.11, < 2)
     ffi (1.17.0)
+    ffi (1.17.0-x86_64-darwin)
     globalid (1.1.0)
       activesupport (>= 5.0)
     haml (6.3.0)
