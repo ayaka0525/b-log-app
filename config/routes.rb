@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
     root to: 'articles#index'
+    #フォローした人の記事がよめる
+    resource :timeline, only: [:show]
 
     #index以外のURLを使用しているので、onlyを外した。
     resources :articles do
