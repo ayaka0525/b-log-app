@@ -41,6 +41,15 @@ class Article < ApplicationRecord
         I18n.l(self.created_at, format: :default)
     end
 
+    def like_count
+        likes.count
+    end
+
+    def author_name
+        #articleで筆者の名前を簡単に表示
+        user.display_name
+    end
+
     private
 
     def validate_title_and_content_length
@@ -49,14 +58,8 @@ class Article < ApplicationRecord
         errors.add(:content, '100文字以上で！') unless char_count > 10
       end
 
-    def author_name
-        #articleで筆者の名前を簡単に表示
-        user.display_name
-    end
 
-    def like_count
-        likes.count
-    end
+
 
 
 end
