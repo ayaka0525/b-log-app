@@ -42,4 +42,26 @@ class User < ApplicationRecord
   end
 
   # いいねしたかどうかを判定
-  def has_liked
+  def has_liked?(article)
+    likes.exists?(article_id: article.id)
+  end
+
+  # メールアドレスの最初の部分を表示名として使う
+  def display_name
+    email.split('@').first
+  end
+
+  # プロフィールが存在しなければ新しく作成
+  def prepare_profile
+    profile || build_profile
+  end
+
+  # アバター画像を取得
+  def avatar_image
+    if profile&.avatar&.attached?
+      profile.avatar
+    else
+      'default-avatar.png'
+    end
+  end
+end
