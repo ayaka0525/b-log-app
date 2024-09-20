@@ -3,7 +3,6 @@
 # Table name: articles
 #
 #  id         :bigint           not null, primary key
-#  content    :text             not null
 #  title      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -37,18 +36,18 @@ class Article < ApplicationRecord
     belongs_to :user
 
     def display_created_at
-        # 記事の作成日を挿入する。ja.ymlを引用している
-        I18n.l(self.created_at, format: :default)
+      I18n.l(self.created_at, format: :default)
     end
-
-    def like_count
-        likes.count
-    end
-
+  
     def author_name
-        #articleで筆者の名前を簡単に表示
-        user.display_name
+      user.display_name
     end
+  
+    def like_count
+      likes.count
+    end
+  end
+
 
     private
 

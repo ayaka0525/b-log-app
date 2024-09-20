@@ -21,9 +21,11 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+#
+gem 'active_decorator'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+ gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -34,8 +36,7 @@ gem 'faker'
 #htmlを短くするためのシステム
 gem 'hamlit'
 
-#データベースのカラム名などを可視化(model)
-gem 'annotate'
+
 
 #文法チェック
 gem 'rubocop-rails'
@@ -65,6 +66,8 @@ group :development, :test do
 end
 
 group :development do
+  #データベースのカラム名などを可視化(model)
+  gem 'annotate'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'listen', '~> 3.2'
   gem 'web-console', '>= 3.3.0'
