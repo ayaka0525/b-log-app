@@ -72,6 +72,19 @@ class User < ApplicationRecord
             profile || build_profile
           end
 
+          def display_name
+            profile&.nickname || self.email.split('@').first
+          end
+        
+          def avatar_image
+            if profile&.avatar&.attached?
+              profile.avatar
+            else
+              'default-avatar.png'
+            end
+          end
+        end
+
 
           private
           def get_user_id(user)
